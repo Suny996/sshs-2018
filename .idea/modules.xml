@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-core/sshs-core.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-core/sshs-core.iml" group="sshs-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-core/sshs-core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-core/sshs-core_main.iml" group="sshs-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-core/sshs-core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-core/sshs-core_test.iml" group="sshs-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs_main.iml" group="sshs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs_test.iml" group="sshs" />
+    </modules>
+  </component>
+</project>
