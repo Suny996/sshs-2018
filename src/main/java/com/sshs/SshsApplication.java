@@ -9,7 +9,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 
 /**
- * @author Simon
+ * 系统启动总入口
+ * @author Suny
  * @date 2018-01-20
  */
 @ComponentScan(basePackages = { "com.sshs" })
@@ -19,6 +20,7 @@ public class SshsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SshsApplication.class, args);
 	}
+
 
 	/*@Bean
 	public static MapperScannerConfigurer mapperScannerConfigurer() {
