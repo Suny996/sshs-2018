@@ -1,3 +1,4 @@
 rootProject.name = 'sshs'
 include 'sshs-core'
+include 'sshs-system'
 

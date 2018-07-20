@@ -1,5 +1,5 @@
 group 'com.sshs'
-version '1.0-SNAPSHOT'
+version '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -11,21 +11,12 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter-webflux',
-            'org.springframework.boot:spring-boot-starter-test',
-            'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2',
-            'tk.mybatis:mapper-spring-boot-starter:2.0.0',
-            'mysql:mysql-connector-java:5.1.44',
-            'commons-lang:commons-lang:2.6',
-            'commons-io:commons-io:2.6',
-            'javax.persistence:persistence-api:1.0',
-    )
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('io.projectreactor:reactor-test')
-}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+dependencies{
+    compile project(":sshs-core")
 }
 sourceSets {
     main {
