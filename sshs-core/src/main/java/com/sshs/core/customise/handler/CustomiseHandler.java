@@ -28,7 +28,7 @@ import static org.springframework.web.reactive.function.BodyExtractors.toMono;
 
 @Component
 public class CustomiseHandler {
-    Log logger = LogFactory.getLog(CustomiseHandler.class);
+    Log logger = LogFactory.getLog(com.sshs.core.customise.handler.CustomiseHandler.class);
     @Resource(name = "sqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
 
@@ -57,10 +57,10 @@ public class CustomiseHandler {
      * @return
      */
     public Mono<ServerResponse> delCustomise(ServerRequest request) {
-        System.out.println(">>>>>>>>>del");
+        //System.out.println(">>>>>>>>>del");
         return ServerResponse.ok()//.contentType(MediaType.APPLICATION_JSON)
                 .body(request.body(toMono(Customise.class)).map(c -> {
-                    System.out.println(">>>>>>>>>"+c.getCustomiseId());
+                    //System.out.println(">>>>>>>>>"+c.getCustomiseId());
                     sqlSessionTemplate.delete("com.sshs.core.customise.mapper.CustomiseMapper.delete", c);
                     return c;
                 }), Customise.class);

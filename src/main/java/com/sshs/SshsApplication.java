@@ -20,8 +20,6 @@ public class SshsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SshsApplication.class, args);
 	}
-
-
 	/*@Bean
 	public static MapperScannerConfigurer mapperScannerConfigurer() {
 		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();

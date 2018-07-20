@@ -13,7 +13,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.n
 @Configuration
 public class CustomiseRouter {
     @Bean
-    public RouterFunction<ServerResponse> route(CustomiseHandler customiseHandler) {
+    public RouterFunction<ServerResponse> customiseRoute(CustomiseHandler customiseHandler) {
        /* return RouterFunctions
                 .nest(RequestPredicates.GET("/customise").nest(RequestPredicates.GET("/get/{id}")
                                 .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
