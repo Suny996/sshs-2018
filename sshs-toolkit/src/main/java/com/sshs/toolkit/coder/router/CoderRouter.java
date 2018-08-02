@@ -1,6 +1,6 @@
-package com.sshs.core.customise.router;
+package com.sshs.toolkit.coder.router;
 
-import com.sshs.core.customise.handler.CustomiseHandler;
+import com.sshs.toolkit.coder.handler.CoderHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -11,12 +11,12 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.nest;
 
 @Configuration
-public class CustomiseRouter {
+public class CoderRouter {
     @Bean
-    public RouterFunction<ServerResponse> customiseRoute(CustomiseHandler customiseHandler) {
+    public RouterFunction<ServerResponse> dictionaryRoute(CoderHandler coderHandler) {
         return nest(
-                path("/customise"), //nest(accept(MediaType.APPLICATION_JSON),
-                RouterFunctions.route(GET("/{pageId}"), customiseHandler::getCustomiseByPageId)
-                        .andRoute(POST("/"), customiseHandler::saveCustomise).andRoute(DELETE("/{customiseId}"), customiseHandler::deleteCustomise));
+                path("/toolkit/coder"), //nest(accept(MediaType.APPLICATION_JSON),
+                RouterFunctions.route(POST("/tableList"), coderHandler::getTableList)
+                        .andRoute(GET("/columnList/{tableName}"), coderHandler::getColunmList));
     }
 }

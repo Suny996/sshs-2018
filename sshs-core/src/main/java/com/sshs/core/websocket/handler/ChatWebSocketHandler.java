@@ -50,7 +50,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
         }
         Mono<Void> output = null;
         for (WebSocketSession s : sessions.values()) {
-            String name = (String) names.get(webSocketSession.getId());
+            String name = names.get(webSocketSession.getId());
             if (s.getId().equals(webSocketSession.getId())) {
                 name = "我";
             }

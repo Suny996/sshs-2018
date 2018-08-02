@@ -12,64 +12,67 @@ import java.util.Map;
 
 /**
  * 分页类
- * 
+ *
  * @author Suny
  * @date 2017年9月28日
  */
 @Alias("Page")
 public class Page<T> {
-	/**
-	 * 每页显示记录数
-	 */
-	@Value("${page.pageSize}")
-	private int pageSize;
-	/**
-	 * 总页数
-	 */
-	private int totalPage;
-	/**
-	 * 总记录数
-	 */
-	private int totalCount;
-	/**
-	 * 当前页
-	 */
-	private int currentPage;
-	/**
-	 * 当前记录起始索引
-	 */
-	private int currentRow;
-	/**
-	 * bootstrap-table 当前记录起始索引
-	 */
-	private int offset;
-	/**
-	 * 每页显示记录数
-	 */
-	private int limit;
-	/**
-	 * 排序
-	 */
-	private String sort, order = "";
-	private String orderBy = "";
-	List<T> rows;
-	Map<String, Object> variables = new HashMap<String, Object>(20);
-	Map<String, Object> userdata = new HashMap<String, Object>(10);
-	Map<String, Object> operators = new HashMap<String, Object>(20);
+    /**
+     * 每页显示记录数
+     */
+    @Value("${page.pageSize}")
+    private int pageSize;
+    /**
+     * 总页数
+     */
+    private int totalPage;
+    /**
+     * 总记录数
+     */
+    private int totalCount;
+    /**
+     * 当前页
+     */
+    private int currentPage;
+    /**
+     * 当前记录起始索引
+     */
+    private int currentRow;
+    /**
+     * bootstrap-table 当前记录起始索引
+     */
+    private int offset;
+    /**
+     * 每页显示记录数
+     */
+    private int limit;
+    /**
+     * 排序
+     */
+    private String sort, order = "";
+    private String orderBy = "";
+    List<T> rows;
+    Map<String, Object> variables = new HashMap<String, Object>(20);
+    Map<String, Object> userdata = new HashMap<String, Object>(10);
+    Map<String, Object> operators = new HashMap<String, Object>(20);
 
-	public Page() {
-		try {
-			if (this.pageSize == 0) {
-				this.pageSize = 10;
-			}
-			this.limit = this.pageSize;
-		} catch (Exception e) {
-			e.printStackTrace();
-			this.pageSize = 10;
-			this.limit = this.pageSize;
-		}
-
-	}
+    public Page() {
+        /*try {
+            if (this.pageSize == 0) {
+                this.pageSize = 10;
+            }
+            this.limit = this.pageSize;
+            if (this.currentPage > 1) {
+                this.offset = (this.currentPage - 1) * this.pageSize;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.pageSize = 10;
+            this.limit = this.pageSize;
+        }
+*/
+    }
 /*
 	public void getPage(HttpServletRequest request) {
 		this.limit = 10;
@@ -97,158 +100,164 @@ public class Page<T> {
 		}
 	}*/
 
-	public int getTotalPage() {
-		if (limit == 0) {
-			this.limit = 10;
-		}
-		if (totalCount % limit == 0) {
-			totalPage = totalCount / limit;
-		} else {
-			totalPage = totalCount / limit + 1;
-		}
-		return totalPage;
-	}
+    public int getTotalPage() {
+        if (limit == 0) {
+            this.limit = 10;
+        }
+        if (totalCount % limit == 0) {
+            totalPage = totalCount / limit;
+        } else {
+            totalPage = totalCount / limit + 1;
+        }
+        return totalPage;
+    }
 
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
-	}
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
 
-	public int getTotalCount() {
-		return totalCount;
-	}
+    public int getTotalCount() {
+        return totalCount;
+    }
 
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-	}
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
 
-	public int getCurrentPage() {
-		if (currentPage <= 0) {
-			currentPage = 1;
-		}
-		if (currentPage > getTotalPage()) {
-			currentPage = getTotalPage();
-		}
-		return currentPage;
-	}
+    public int getCurrentPage() {
+        if (currentPage <= 0) {
+            currentPage = 1;
+        }
+        if (currentPage > getTotalPage()) {
+            currentPage = getTotalPage();
+        }
+        return currentPage;
+    }
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
-	}
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
 
-	public int getPageSize() {
-		return pageSize;
-	}
+    public int getPageSize() {
+        return pageSize;
+    }
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 
-	public int getCurrentRow() {
-		currentRow = this.offset;
-		if (currentRow < 0) {
-			currentRow = 0;
-		}
-		return currentRow;
-	}
+    public int getCurrentRow() {
+        currentRow = this.offset;
+        if (currentRow < 0) {
+            currentRow = 0;
+        }
+        return currentRow;
+    }
 
-	public void setCurrentRow(int currentRow) {
-		this.currentRow = currentRow;
-	}
+    public void setCurrentRow(int currentRow) {
+        this.currentRow = currentRow;
+    }
 
-	public int getOffset() {
-		return offset;
-	}
+    public int getOffset() {
+        if (this.currentPage >= 1) {
+            this.offset = (this.currentPage - 1) * this.pageSize;
+        }
+        return offset;
+    }
 
-	public int getLimit() {
-		return limit;
-	}
+    public int getLimit() {
+        if (this.pageSize >= 1) {
+            this.limit = this.pageSize;
+        }
+        return limit;
+    }
 
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
 
-	public void setLimit(int limit) {
-		this.limit = limit;
-	}
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
 
-	public List<T> getRows() {
-		return rows;
-	}
+    public List<T> getRows() {
+        return rows;
+    }
 
-	public void setRows(List<T> rows) {
-		this.rows = rows;
-	}
+    public void setRows(List<T> rows) {
+        this.rows = rows;
+    }
 
-	public Map<String, Object> getVariables() {
-		return variables;
-	}
+    public Map<String, Object> getVariables() {
+        return variables;
+    }
 
-	public void setVariables(Map<String, Object> variables) {
-		this.variables = variables;
-	}
+    public void setVariables(Map<String, Object> variables) {
+        this.variables = variables;
+    }
 
-	public Map<String, Object> getUserdata() {
-		return userdata;
-	}
+    public Map<String, Object> getUserdata() {
+        return userdata;
+    }
 
-	public void setUserdata(Map<String, Object> userdata) {
-		this.userdata = userdata;
-	}
+    public void setUserdata(Map<String, Object> userdata) {
+        this.userdata = userdata;
+    }
 
-	public Map<String, Object> getOperators() {
-		return operators;
-	}
+    public Map<String, Object> getOperators() {
+        return operators;
+    }
 
-	public void setOperators(Map<String, Object> operators) {
-		this.operators = operators;
-	}
+    public void setOperators(Map<String, Object> operators) {
+        this.operators = operators;
+    }
 
-	public String getSort() {
-		return sort;
-	}
+    public String getSort() {
+        return sort;
+    }
 
-	public void setSort(String sort) {
-		if (StringUtils.isNotEmpty(sort)) {
-			this.sort = ReflectHelper.getColumnName(sort);
-			this.orderBy = this.sort + " " + this.orderBy;
-		}
-	}
+    public void setSort(String sort) {
+        if (StringUtils.isNotEmpty(sort)) {
+            this.sort = ReflectHelper.getColumnName(sort);
+            this.orderBy = this.sort + " " + this.orderBy;
+        }
+    }
 
-	public String getOrder() {
-		return order;
-	}
+    public String getOrder() {
+        return order;
+    }
 
-	public void setOrder(String order) {
-		if (StringUtils.isNotEmpty(order)) {
-			this.order = order;
-			if (StringUtils.isNotEmpty(this.orderBy)) {
-				this.orderBy = this.orderBy + " " + order;
-			}
-		}
-	}
+    public void setOrder(String order) {
+        if (StringUtils.isNotEmpty(order)) {
+            this.order = order;
+            if (StringUtils.isNotEmpty(this.orderBy)) {
+                this.orderBy = this.orderBy + " " + order;
+            }
+        }
+    }
 
-	public String getOrderBy() {
-		return orderBy;
-	}
+    public String getOrderBy() {
+        return orderBy;
+    }
 
-	public void setOrderBy(String orderBy) {
-		String orderName = "";
-		String order = "";
-		if (StringUtils.isNotEmpty(orderBy)) {
-			if (orderBy.contains(Global.CHARACTER_BLANK)) {
-				String[] orders = orderBy.split(Global.CHARACTER_BLANK);
-				orderName = orders[0];
-				order = orders[1];
-				this.orderBy = ReflectHelper.getColumnName(orderName) + Global.CHARACTER_BLANK + order;
-			} else {
-				this.orderBy = orderBy;
-			}
-		} else {
-			if (StringUtils.isNotEmpty(this.sort)) {
-				this.orderBy = this.sort + Global.CHARACTER_BLANK + this.order;
-			} else {
-				this.orderBy = orderBy;
-			}
-		}
-	}
+    public void setOrderBy(String orderBy) {
+        String orderName = "";
+        String order = "";
+        if (StringUtils.isNotEmpty(orderBy)) {
+            if (orderBy.contains(Global.CHARACTER_BLANK)) {
+                String[] orders = orderBy.split(Global.CHARACTER_BLANK);
+                orderName = orders[0];
+                order = orders[1];
+                this.orderBy = ReflectHelper.getColumnName(orderName) + Global.CHARACTER_BLANK + order;
+            } else {
+                this.orderBy = orderBy;
+            }
+        } else {
+            if (StringUtils.isNotEmpty(this.sort)) {
+                this.orderBy = this.sort + Global.CHARACTER_BLANK + this.order;
+            } else {
+                this.orderBy = orderBy;
+            }
+        }
+    }
 }

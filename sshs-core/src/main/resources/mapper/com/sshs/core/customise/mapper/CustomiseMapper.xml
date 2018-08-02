@@ -56,6 +56,12 @@
 		where customise_id=#{customiseId}
 	</delete>
 	<!-- 自定义查询删除 -->
+	<delete id="deleteByCustomiseId" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where customise_id=#{_parameter}
+	</delete>
+	<!-- 自定义查询删除 -->
 	<delete id="deleteByCustomiseName" parameterType="com.sshs.core.customise.model.Customise">
 		delete from
 		<include refid="tableName"></include>

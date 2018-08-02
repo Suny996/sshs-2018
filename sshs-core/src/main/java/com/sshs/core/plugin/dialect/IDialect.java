@@ -31,4 +31,11 @@ public interface IDialect {
 	 * @return
 	 */
 	String getAlterTableString(String tableName);
+
+	/**
+	 * 获取模糊匹配变量（like 加%）
+	 * @param variable
+	 * @return
+	 */
+	String getLikedVariable(String variable);
 }

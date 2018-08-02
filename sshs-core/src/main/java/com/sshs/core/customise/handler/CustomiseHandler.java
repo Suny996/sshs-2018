@@ -1,6 +1,7 @@
 package com.sshs.core.customise.handler;
 
 import com.sshs.core.customise.model.Customise;
+import com.sshs.core.message.Message;
 import com.sshs.core.util.UuidUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,10 +39,9 @@ public class CustomiseHandler {
      * @param request
      * @return
      */
-    public Mono<ServerResponse> addCustomise(ServerRequest request) {
-        return ServerResponse.ok()//.contentType(MediaType.APPLICATION_JSON)
+    public Mono<ServerResponse> saveCustomise(ServerRequest request) {
+        return ServerResponse.ok()
                 .body(request.body(toMono(Customise.class)).map(c -> {
-                    //System.out.println(">>>>>" + c.getCustomiseName());
                     c.setCustomiseId(UuidUtil.get32UUID());
                     c.setUserCode("admin");
                     c.setCrtDate(new Date());
@@ -56,14 +56,12 @@ public class CustomiseHandler {
      * @param request
      * @return
      */
-    public Mono<ServerResponse> delCustomise(ServerRequest request) {
+    public Mono<ServerResponse> deleteCustomise(ServerRequest request) {
         //System.out.println(">>>>>>>>>del");
+        String customiseId = request.pathVariable("customiseId");
+        sqlSessionTemplate.delete("com.sshs.core.customise.mapper.CustomiseMapper.deleteByCustomiseId", customiseId);
         return ServerResponse.ok()//.contentType(MediaType.APPLICATION_JSON)
-                .body(request.body(toMono(Customise.class)).map(c -> {
-                    //System.out.println(">>>>>>>>>"+c.getCustomiseId());
-                    sqlSessionTemplate.delete("com.sshs.core.customise.mapper.CustomiseMapper.delete", c);
-                    return c;
-                }), Customise.class);
+                .body(BodyInserters.fromObject(new Message("100000")));
     }
 
     /**
@@ -72,8 +70,8 @@ public class CustomiseHandler {
      * @param request
      * @return
      */
-    public Mono<ServerResponse> getCustomise(ServerRequest request) {
-        String pageId = request.pathVariable("id");
+    public Mono<ServerResponse> getCustomiseByPageId(ServerRequest request) {
+        String pageId = request.pathVariable("pageId");
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
         Customise custom = new Customise();
         custom.setPageId(pageId);

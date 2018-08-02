@@ -49,8 +49,7 @@ public class DictionaryServiceImpl extends BaseServiceImpl<Dictionary> implement
         return dao.update(dictionary);
     }
 
-    @Override
-    public void findForList(Page<Dictionary> page) throws Exception {
+    public void findForList(Page<Dictionary> page) {
         findForPageList("com.afcac.system.dictionary.dao.DictionaryDao.findForPageList", page);
     }
 

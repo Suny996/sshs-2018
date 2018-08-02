@@ -69,10 +69,10 @@ public interface IDictionaryService {
 	 * @param page
 	 * @throws Exception
 	 */
-	public void findForList(Page<Dictionary> page) throws Exception;
+    void findForList(Page<Dictionary> page) throws Exception;
 
 	/**
 	 * 数据字典初始化
 	 */
-	public void initDictList();
+    void initDictList();
 }

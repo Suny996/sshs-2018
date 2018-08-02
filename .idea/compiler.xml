@@ -6,6 +6,8 @@
       <module name="sshs-core_test" target="1.8" />
       <module name="sshs-system_main" target="1.8" />
       <module name="sshs-system_test" target="1.8" />
+      <module name="sshs-toolkit_main" target="1.8" />
+      <module name="sshs-toolkit_test" target="1.8" />
       <module name="sshs_main" target="1.8" />
       <module name="sshs_test" target="1.8" />
     </bytecodeTargetLevel>

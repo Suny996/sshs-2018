@@ -14,7 +14,7 @@ public class SystemApplicationRunner  implements ApplicationRunner {
     @Resource
     private IDictionaryService dictionaryService;
     @Override
-    public void run(ApplicationArguments var1) throws Exception{
+    public void run(ApplicationArguments var1) {
         System.out.println("==========>SystemApplicationRunner!");
             dictionaryService.initDictList();
     }

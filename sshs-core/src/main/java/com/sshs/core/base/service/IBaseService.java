@@ -1,8 +1,8 @@
 package com.sshs.core.base.service;
 
-import java.util.List;
-
 import com.sshs.core.page.Page;
+
+import java.util.List;
 
 /**
  * 基础服务接口

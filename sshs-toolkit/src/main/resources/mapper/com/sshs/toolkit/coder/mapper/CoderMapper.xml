@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sshs.toolkit.coder.mapper.CoderMapper">
+
+    <!--表名 -->
+    <sql id="tableName">
+		TOO_CODER
+	</sql>
+
+    <!-- 字段 -->
+    <sql id="Field">
+		CODER_ID ,
+		TITLE ,
+		MODEL_NAME ,
+		MODEL_NAME_CN ,
+		FUNCTION_NAME,
+		PACKAGE_NAME ,
+		CLASS_NAME ,
+		TABLE_NAME ,
+		TABLE_COMMENT,
+		FIELDS ,
+		CODER_TYPE ,
+		CRT_USER_CODE ,
+		CRT_ORG_CODE ,
+		CRT_DATE ,
+		UPD_USER_CODE ,
+		UPD_ORG_CODE ,
+		UPD_DATE
+	</sql>
+
+    <!-- 字段值 -->
+    <sql id="FieldValue">
+		#{coderId},
+		#{title},
+		#{modelName},
+		#{modelNameCn},
+		#{functionName},
+		#{packageName},
+		#{className},
+		#{tableName},
+		#{tableComment},
+		#{columns,jdbcType=BLOB},
+		#{coderType},
+		#{crtUserCode},
+		#{crtOrgCode},
+		#{crtDate},
+		#{updUserCode},
+		#{updOrgCode},
+		#{updDate}
+	</sql>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="Page" resultType="Page">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        where
+        CREATECODE_ID = #{CREATECODE_ID}
+    </select>
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        delete from
+        <include refid="tableName"></include>
+        where
+        CREATECODE_ID in
+        <foreach item="item" index="index" collection="array" open="("
+                 separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!-- 根据表面删除 -->
+    <delete id="deleteByTableName" parameterType="String">
+        delete from
+        <include refid="tableName"></include>
+        where
+        TABLE_NAME = #{tableName}
+    </delete>
+    <!-- 代码生成-查询表信息 -->
+    <select id="findDbTableForPageList" parameterType="Page"
+            resultType="Coder">
+        SELECT DISTINCT
+        C.CODER_ID,
+        T.TABLE_NAME,
+        T.TABLE_COMMENT,
+        CASE
+        WHEN C.CODER_ID IS NULL
+        THEN '0'
+        ELSE '1'
+        END AS CODER_FLAG,
+        TITLE,
+        MODEL_NAME,
+        MODEL_NAME_CN,
+        PACKAGE_NAME,
+        CLASS_NAME,
+        FUNCTION_NAME
+        FROM
+        V_TOO_TABLES T
+        LEFT JOIN
+        (SELECT
+        CODER_ID,
+        TITLE,
+        MODEL_NAME,
+        MODEL_NAME_CN,
+        PACKAGE_NAME,
+        CLASS_NAME,
+        FUNCTION_NAME,
+        TABLE_NAME,
+        TABLE_COMMENT,
+        '1' AS CODER_FLAG
+        FROM
+        TOO_CODER) C
+        ON
+        T.TABLE_NAME = C.TABLE_NAME
+        WHERE 1=1
+        <if
+                test="variables.tableName != null and variables.tableName != ''">
+            AND T.TABLE_NAME
+            <choose>
+                <when
+                        test="operators.tableName != null and operators.tableName != '' ">${operators.tableName}
+                </when>
+                <otherwise>=</otherwise>
+            </choose>
+            upper(#{variables.tableName})
+        </if>
+        <if
+                test="variables.tableComment != null and variables.tableComment != ''">
+            AND T.TABLE_COMMENT LIKE  #{variables.tableComment}
+        </if>
+        <if
+                test="variables.coderFlag != null and variables.coderFlag != ''">
+            AND ((C.CODER_ID IS NOT NULL AND '1' = #{variables.coderFlag} ) OR (C.CODER_ID IS
+            NULL AND '0' = #{variables.coderFlag}))
+        </if>
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY T.TABLE_NAME
+        </if>
+    </select>
+
+    <!-- 代码生成-查询列信息 -->
+    <select id="findColumnAll" parameterType="String"
+            resultType="Column">
+        SELECT COLUMN_ID,
+        TABLE_NAME,
+        TABLE_COMMENT,
+        COLUMN_NAME,
+        COLUMN_COMMENT,
+        COLUMN_TYPE,
+        COLUMN_SIZE,
+        COLUMN_SCALE,
+        DEFAULT_VALUE,
+        PRIMARY_KEY_FLAG,
+        REQUIRED_FLAG,
+        'on' AS
+        SEARCH_FLAG,'on' AS
+        LIST_FLAG,'on' AS
+        MODIFY_FLAG,'on' AS
+        ADD_FLAG
+        FROM V_TOO_TABLES
+        WHERE 1=1
+        <if test="tableName != null and tableName != ''">
+            AND TABLE_NAME =#{_parameter}
+        </if>
+        ORDER BY COLUMN_ID
+    </select>
+</mapper>

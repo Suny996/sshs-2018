@@ -22,6 +22,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="sshs_main" />
     <orderEntry type="module" module-name="sshs-system_main" />
+    <orderEntry type="module" module-name="sshs-toolkit_main" />
     <orderEntry type="module" module-name="sshs-core_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-webflux:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:2.0.2.RELEASE" level="project" />

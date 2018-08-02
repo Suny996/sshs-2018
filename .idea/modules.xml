@@ -9,6 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-system.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-system.iml" group="sshs-system" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-system/sshs-system_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-system/sshs-system_main.iml" group="sshs-system" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-system/sshs-system_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-system/sshs-system_test.iml" group="sshs-system" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-toolkit.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-toolkit.iml" group="sshs-toolkit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-toolkit/sshs-toolkit_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-toolkit/sshs-toolkit_main.iml" group="sshs-toolkit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs-toolkit/sshs-toolkit_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs-toolkit/sshs-toolkit_test.iml" group="sshs-toolkit" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs_main.iml" group="sshs" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sshs_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sshs_test.iml" group="sshs" />
     </modules>

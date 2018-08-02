@@ -45,12 +45,11 @@ public class ReflectHelper {
 	 * @param fieldName
 	 * @return
 	 * @throws SecurityException
-	 * @throws NoSuchFieldException
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
 	 */
 	public static Object getValueByFieldName(Object obj, String fieldName)
-			throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+			throws SecurityException, IllegalArgumentException, IllegalAccessException {
 		Field field = getFieldByFieldName(obj, fieldName);
 		Object value = null;
 		if (field != null) {

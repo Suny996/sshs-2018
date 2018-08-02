@@ -28,6 +28,7 @@ repositories {
 dependencies{
     //compile project(":sshs-core")
 	compile project(":sshs-system")
+	compile project(":sshs-toolkit")
 }
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-webflux',

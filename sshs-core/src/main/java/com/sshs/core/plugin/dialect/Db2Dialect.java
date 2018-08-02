@@ -42,13 +42,13 @@ public class Db2Dialect extends AbstractDialect {
 	public String getLimitString(String sql, int offset, int limit) {
 		int startOfSelect = sql.toLowerCase().indexOf("select");
 
-		StringBuffer pagingSelect = new StringBuffer(sql.length() + 100).append(sql.substring(0, startOfSelect))
+		StringBuffer pagingSelect = new StringBuffer(sql.length() + 100).append(sql, 0, startOfSelect)
 				.append("select * from ( select ").append(getRowNumber(sql));
-		if (super.hasDistinct(sql)) {
-			pagingSelect.append(" row_.* from ( ").append(sql.substring(startOfSelect, getOrderByIdex(sql)))
+		if (hasDistinct(sql)) {
+			pagingSelect.append(" row_.* from ( ").append(sql, startOfSelect, getOrderByIdex(sql))
 					.append(" ) as row_");
 		} else {
-			pagingSelect.append(sql.substring(startOfSelect + 6, getOrderByIdex(sql)));
+			pagingSelect.append(sql, startOfSelect + 6, getOrderByIdex(sql));
 		}
 		pagingSelect.append(" ) as temp_ where rownumber_ ");
 
