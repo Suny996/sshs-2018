@@ -13,18 +13,23 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-dependencies{
     compile project(":sshs-core")
 }
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-freemarker',
+            'org.apache.poi:poi',
+            'dom4j:dom4j')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
 sourceSets {
     main {
         java {
             srcDirs = ['src/main/java']
         }
         resources {
-            srcDirs = ['src/main/resources/config','src/main/resources/mapper']
+            srcDirs = ['src/main/resources/config', 'src/main/resources/mapper']
         }
     }
     test {

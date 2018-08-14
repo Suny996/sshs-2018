@@ -114,6 +114,17 @@
         T.TABLE_NAME = C.TABLE_NAME
         WHERE 1=1
         <if
+                test="variables.title != null and variables.title != ''">
+            AND C.TITLE
+            <choose>
+                <when
+                        test="operators.title != null and operators.title != '' ">${operators.title}
+                </when>
+                <otherwise>=</otherwise>
+            </choose>
+            upper(#{variables.title})
+        </if>
+        <if
                 test="variables.tableName != null and variables.tableName != ''">
             AND T.TABLE_NAME
             <choose>
@@ -126,7 +137,7 @@
         </if>
         <if
                 test="variables.tableComment != null and variables.tableComment != ''">
-            AND T.TABLE_COMMENT LIKE  #{variables.tableComment}
+            AND T.TABLE_COMMENT LIKE #{variables.tableComment}
         </if>
         <if
                 test="variables.coderFlag != null and variables.coderFlag != ''">
@@ -161,10 +172,7 @@
         MODIFY_FLAG,'on' AS
         ADD_FLAG
         FROM V_TOO_TABLES
-        WHERE 1=1
-        <if test="tableName != null and tableName != ''">
-            AND TABLE_NAME =#{_parameter}
-        </if>
+        WHERE  TABLE_NAME =#{_parameter}
         ORDER BY COLUMN_ID
     </select>
 </mapper>

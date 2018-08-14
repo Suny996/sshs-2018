@@ -2,8 +2,10 @@ package com.sshs.toolkit.coder.mapper;
 
 import com.sshs.toolkit.coder.model.Coder;
 import com.sshs.toolkit.coder.model.Column;
-import reactor.core.publisher.Flux;
 import tk.mybatis.mapper.common.Mapper;
+
+import java.util.List;
+
 /**
  * 代码生成dao接口
  *
@@ -57,5 +59,5 @@ public interface CoderMapper extends Mapper<Coder> {
      * @param tableName
      * @return
      */
-    Flux<Column> findColumnAll(String tableName);
+    List<Column> findColumnAll(String tableName);
 }

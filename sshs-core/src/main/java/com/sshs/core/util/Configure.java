@@ -59,13 +59,13 @@ public class Configure {
 		InputStream in = null;
 		try {
 			/* 第一种，通过类加载器进行获取properties文件流- */
-			in = Configure.class.getClassLoader().getResourceAsStream("config/application.properties");
+			in = Configure.class.getClassLoader().getResourceAsStream("application.properties");
 			props.load(in);
 
 			String runMode = props.getProperty("core.server.runMode");
 			if (StringUtils.isNotEmpty(runMode)) {
 				in = Configure.class.getClassLoader()
-						.getResourceAsStream("config/application-" + runMode.toLowerCase() + ".properties");
+						.getResourceAsStream("application-" + runMode.toLowerCase() + ".properties");
 				if (in != null) {
 					props.load(in);
 				}

@@ -245,7 +245,7 @@ public class PagePlugin implements Interceptor {
                 for (String name : page.getOperators().keySet()) {
                     String operator = (String) page.getOperators().get(name);
                     String variable = (String) page.getVariables().get(name);
-                    if ("LIKE".equals(operator) && StringUtils.isNotEmpty(variable)) {
+                    if ("like".equalsIgnoreCase(operator) && StringUtils.isNotEmpty(variable)) {
                         page.getVariables().put(name, dialect1.getLikedVariable(variable));
                     }
                 }

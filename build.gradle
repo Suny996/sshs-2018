@@ -37,8 +37,6 @@ dependencies {
 	testCompile('io.projectreactor:reactor-test')
 }
 
-
-
 //sourceCompatibility = 1.8
 
 repositories {

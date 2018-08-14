@@ -6,9 +6,9 @@ import com.sshs.toolkit.coder.model.Coder;
 import com.sshs.toolkit.coder.model.Column;
 import com.sshs.toolkit.coder.service.ICoderService;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 类名称：CreateCodeService 代码生成器
@@ -61,7 +61,7 @@ public class CoderServiceImpl extends BaseServiceImpl<Coder> implements ICoderSe
      * @param tableName
      */
     @Override
-    public Flux<Column> findColumnForList(String tableName) {
+    public List<Column> findColumnForList(String tableName) {
         return coderMapper.findColumnAll(tableName);
     }
 

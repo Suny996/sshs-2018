@@ -3,7 +3,8 @@ package com.sshs.toolkit.coder.service;
 import com.sshs.core.base.service.IBaseService;
 import com.sshs.toolkit.coder.model.Coder;
 import com.sshs.toolkit.coder.model.Column;
-import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 /**
  * 类名称：代码生成器接口类
@@ -48,6 +49,6 @@ public interface ICoderService extends IBaseService<Coder> {
 	 * @throws Exception
 	 * @return
 	 */
-    Flux<Column> findColumnForList(String tableName) throws Exception;
+    List<Column> findColumnForList(String tableName) throws Exception;
 
 }
