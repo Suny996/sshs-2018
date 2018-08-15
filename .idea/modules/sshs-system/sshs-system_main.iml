@@ -10,6 +10,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../sshs-system/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../sshs-system/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../sshs-system/src/main/resources/config" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../sshs-system/src/main/resources/mapper" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
