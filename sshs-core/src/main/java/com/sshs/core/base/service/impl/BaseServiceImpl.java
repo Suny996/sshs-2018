@@ -41,9 +41,15 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
      * @throws Exception
      */
     @Override
-    public int save(T model) throws Exception {
+    public T save(T model) throws Exception {
         setCrtProperties(model);
-        return dao.insert(model);
+        System.out.println(">>>>>>" + model.getClass().getDeclaredMethod("getId").getAnnotations());
+
+        if (dao.insert(model) > 0) {
+            return model;
+        } else {
+            return null;
+        }
     }
 
     /**

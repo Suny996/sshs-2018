@@ -18,7 +18,7 @@ public interface IDictionaryService {
 	 * @return
 	 * @throws Exception
 	 */
-	int save(Dictionary dictionary) throws Exception;
+	Dictionary save(Dictionary dictionary) throws Exception;
 
 	/**
 	 * 修改

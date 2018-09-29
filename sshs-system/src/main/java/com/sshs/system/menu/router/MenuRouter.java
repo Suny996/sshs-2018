@@ -17,6 +17,6 @@ public class MenuRouter {
         return nest(
                 path("/system/menu"), //nest(accept(MediaType.APPLICATION_JSON),
                 RouterFunctions.route(GET("/{menuCode}/{type}"), menuHandler::getMenuById)
-                        .andRoute(POST("/"), menuHandler::save).andRoute(DELETE("/"), menuHandler::delete));
+                        .andRoute(POST("/"), menuHandler::save).andRoute(DELETE("/{menuCode}"), menuHandler::delete));
     }
 }

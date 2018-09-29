@@ -19,7 +19,7 @@ import java.util.*;
  * @author Suny
  * @date 2017-12-01
  */
-@Service
+@Service("dictionaryService")
 public class DictionaryServiceImpl extends BaseServiceImpl<Dictionary> implements IDictionaryService {
     /**
      * 字典缓存。
@@ -40,8 +40,12 @@ public class DictionaryServiceImpl extends BaseServiceImpl<Dictionary> implement
     }
 
     @Override
-    public int save(Dictionary dictionary) throws Exception {
-        return dao.save(dictionary);
+    public Dictionary save(Dictionary dictionary) throws Exception {
+        if (dao.save(dictionary) > 0) {
+            return dictionary;
+        } else {
+            return null;
+        }
     }
 
     @Override

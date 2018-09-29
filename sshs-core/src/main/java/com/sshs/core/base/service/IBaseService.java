@@ -19,7 +19,7 @@ public interface IBaseService<T> {
 	 * @return
 	 * @throws Exception
 	 */
-	int save(T model) throws Exception;
+	T save(T model) throws Exception;
 
 	/**
 	 * 修改

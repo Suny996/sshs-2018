@@ -33,7 +33,7 @@ public class DictionaryHandler {
     @Resource(name = "sqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
 
-    @Resource
+    @Resource(name="dictionaryService")
     private IDictionaryService dictionaryService;
     /**
      * 添加自定义查询方法

@@ -1,10 +1,10 @@
 package com.sshs.core.util;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.lang.reflect.Field;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.lang.StringUtils;
 
 /**
  * 说明：反射工具
@@ -90,7 +90,7 @@ public class ReflectHelper {
 	/**
 	 * 下划线转小驼峰法
 	 * 
-	 * @param line
+	 * @param columnName
 	 *            源字符串
 	 * @return 转换后的字符串
 	 */
@@ -101,7 +101,7 @@ public class ReflectHelper {
 	/**
 	 * 下划线转驼峰法
 	 * 
-	 * @param line
+	 * @param columnName
 	 *            源字符串
 	 * @param smallCamel
 	 *            大小驼峰,是否为小驼峰
@@ -131,7 +131,7 @@ public class ReflectHelper {
 	/**
 	 * 驼峰法转下划线
 	 * 
-	 * @param line
+	 * @param property
 	 *            源字符串
 	 * @return 转换后的字符串
 	 */

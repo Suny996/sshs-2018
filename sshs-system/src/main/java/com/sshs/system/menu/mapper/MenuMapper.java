@@ -20,6 +20,13 @@ public interface MenuMapper extends Mapper<Menu> {
     public Menu findMenuById(String menuCode);
 
     /**
+     * 根据menuCode查询最后一个子菜单（用于生成菜单编号）
+     * @param menuCode
+     * @return
+     */
+    public String findLastChildCodeById(String menuCode);
+
+    /**
      * 查询所有记录
      * @return
      */

@@ -28,10 +28,14 @@ public class CoderServiceImpl extends BaseServiceImpl<Coder> implements ICoderSe
      * @param coder
      */
     @Override
-    public int save(Coder coder) {
+    public Coder save(Coder coder) {
         // 新增一条数据
         coderMapper.deleteByTableName(coder.getTableName());
-        return coderMapper.insert(coder);
+        if (coderMapper.insert(coder) > 0) {
+            return coder;
+        } else {
+            return null;
+        }
         // coderDao.save(coder);
     }
 

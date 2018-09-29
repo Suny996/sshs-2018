@@ -52,7 +52,7 @@ public class MenuHandler {
                     }*/
                     m.setCrtDate(new Date());
                     try {
-                        if (menuService.save(m) > 0) {
+                        if (menuService.save(m) != null) {
                             return new Message("100000", m);
                         } else {
                             return new Message("100001");

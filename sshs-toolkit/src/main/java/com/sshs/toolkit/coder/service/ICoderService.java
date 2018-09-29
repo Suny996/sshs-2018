@@ -22,7 +22,7 @@ public interface ICoderService extends IBaseService<Coder> {
 	 * @throws Exception
 	 * @return
 	 */
-    int save(Coder coder) throws Exception;
+    Coder save(Coder coder) throws Exception;
 
 	/**
 	 * 删除
